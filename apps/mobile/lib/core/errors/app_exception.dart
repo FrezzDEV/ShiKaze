@@ -1,5 +1,3 @@
-import 'dart:io';
-
 class ApiException implements Exception {
   const ApiException(this.message, {this.statusCode});
 
