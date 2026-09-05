@@ -1,0 +1,18 @@
+{
+  "name": "@shikaze/api",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "engines": {"node": ">=22"},
+  "dependencies": {
+    "@supabase/supabase-js": "^2.115.0",
+    "fastify": "^5.12.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.4.0",
+    "typescript": "^7.0.2"
+  }
+}
