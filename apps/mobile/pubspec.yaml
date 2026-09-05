@@ -1,0 +1,29 @@
+name: shikaze
+publish_to: none
+description: Modular manga reader foundation.
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.12.0 <4.0.0"
+  flutter: ">=3.32.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^3.4.3
+  go_router: ^18.0.1
+  dio: ^5.11.1
+  supabase_flutter: ^2.17.2
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.12.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.7.1
+  freezed: ^4.0.1
+  json_serializable: ^6.11.0
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
