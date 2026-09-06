@@ -1,0 +1,97 @@
+name: Android Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (for example v0.1.0)'
+        required: true
+        default: 'v0.1.0'
+
+env:
+  FLUTTER_DIR: apps/mobile
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+          pub-cache: true
+
+      - name: Generate Android platform
+        working-directory: ${{ env.FLUTTER_DIR }}
+        run: |
+          flutter create \
+            --platforms=android \
+            --project-name=shikaze \
+            --org=dev.frezzdev \
+            .
+
+      - name: Install dependencies
+        working-directory: ${{ env.FLUTTER_DIR }}
+        run: flutter pub get
+
+      - name: Analyze
+        working-directory: ${{ env.FLUTTER_DIR }}
+        run: flutter analyze
+
+      - name: Test
+        working-directory: ${{ env.FLUTTER_DIR }}
+        run: flutter test
+
+      - name: Build release APK
+        working-directory: ${{ env.FLUTTER_DIR }}
+        run: flutter build apk --release
+
+      - name: Resolve release tag
+        id: release
+        shell: bash
+        run: |
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            echo "tag=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Rename APK
+        shell: bash
+        run: |
+          cp "${{ env.FLUTTER_DIR }}/build/app/outputs/flutter-apk/app-release.apk" \
+            "ShiKaze-${{ steps.release.outputs.tag }}.apk"
+
+      - name: Create or update GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.release.outputs.tag }}
+          APK: ShiKaze-${{ steps.release.outputs.tag }}.apk
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$APK" --clobber
+          else
+            gh release create "$TAG" "$APK" \
+              --target "${GITHUB_SHA}" \
+              --title "ShiKaze $TAG" \
+              --generate-notes
+          fi
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: shikaze-${{ steps.release.outputs.tag }}-apk
+          path: ShiKaze-${{ steps.release.outputs.tag }}.apk
+          if-no-files-found: error
