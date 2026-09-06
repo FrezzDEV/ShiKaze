@@ -1,4 +1,4 @@
-import '../../../core/network/api_client.dart';
+import '../../../../core/network/api_client.dart';
 import '../../domain/entities/manga.dart';
 import '../../domain/repositories/manga_repository.dart';
 
