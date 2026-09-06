@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../app/providers/app_providers.dart';
-import '../../domain/entities/manga.dart';
+import '../domain/entities/manga.dart';
 
 final mangaViewModelProvider =
     AsyncNotifierProvider<MangaViewModel, List<Manga>>(MangaViewModel.new);
