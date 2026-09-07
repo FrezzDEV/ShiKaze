@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(22, 22, 22, 0),
-              sliver: SliverToBoxAdapter(child: const SectionHeader(title: 'Продолжить', action: 'Все')),
+              sliver: const SliverToBoxAdapter(child: SectionHeader(title: 'Продолжить', action: 'Все')),
             ),
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(14, 10, 14, 0),
@@ -45,11 +45,11 @@ class HomeScreen extends StatelessWidget {
             ),
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(22, 22, 22, 10),
-              sliver: SliverToBoxAdapter(child: const SectionHeader(title: 'Популярное', action: 'Смотреть все')),
+              sliver: const SliverToBoxAdapter(child: SectionHeader(title: 'Популярное', action: 'Смотреть все')),
             ),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 14),
-              sliver: SliverToBoxAdapter(child: _PopularRow()),
+              sliver: const SliverToBoxAdapter(child: _PopularRow()),
             ),
             const SliverToBoxAdapter(child: SizedBox(height: 22)),
           ],
@@ -82,7 +82,7 @@ class _HeroBanner extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
-                  colors: [Colors.white.withOpacity(0.96), Colors.white.withOpacity(0.66), Colors.transparent],
+                  colors: [Colors.white.withValues(alpha: 0.96), Colors.white.withValues(alpha: 0.66), Colors.transparent],
                   stops: const [0, 0.48, 1],
                 ),
               ),
@@ -177,6 +177,8 @@ class _ContinueCard extends StatelessWidget {
 }
 
 class _PopularRow extends StatelessWidget {
+  const _PopularRow();
+
   @override
   Widget build(BuildContext context) {
     const items = [('Jujutsu Kaisen', 'Chapter 271', '呪'), ('One Piece', 'Chapter 1160', '航'), ('Chainsaw Man', 'Chapter 221', '刃')];
