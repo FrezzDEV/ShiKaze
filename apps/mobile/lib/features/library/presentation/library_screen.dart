@@ -15,13 +15,25 @@ class LibraryScreen extends StatelessWidget {
       }),
       body: SafeArea(
         bottom: false,
-        child: Column(
-          children: const [
+        child: const Column(
+          children: [
             Padding(
               padding: EdgeInsets.fromLTRB(22, 18, 22, 0),
-              child: Align(alignment: Alignment.centerLeft, child: Text('Библиотека', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800, letterSpacing: -0.7))),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Библиотека',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800, letterSpacing: -0.7),
+                ),
+              ),
             ),
-            Expanded(child: EmptyState(icon: Icons.grid_view_rounded, title: 'Библиотека', message: 'Здесь будут твои\nсохранённые серии.')),
+            Expanded(
+              child: EmptyState(
+                icon: Icons.grid_view_rounded,
+                title: 'Библиотека',
+                message: 'Здесь будут твои\nсохранённые серии.',
+              ),
+            ),
           ],
         ),
       ),
