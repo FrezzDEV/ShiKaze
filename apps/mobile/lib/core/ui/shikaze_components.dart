@@ -35,7 +35,7 @@ class MangaArt extends StatelessWidget {
                   width: 190,
                   height: 24,
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.46),
+                    color: Colors.black.withValues(alpha: 0.46),
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
@@ -50,7 +50,7 @@ class MangaArt extends StatelessWidget {
                   width: 190,
                   height: 42,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFE9B58E).withOpacity(0.48),
+                    color: const Color(0xFFE9B58E).withValues(alpha: 0.48),
                     borderRadius: BorderRadius.circular(40),
                   ),
                 ),
@@ -60,7 +60,7 @@ class MangaArt extends StatelessWidget {
               child: Text(
                 label,
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.96),
+                  color: Colors.white.withValues(alpha: 0.96),
                   fontSize: height * 0.34,
                   fontWeight: FontWeight.w300,
                   shadows: const [Shadow(blurRadius: 14, color: Colors.black54)],
@@ -84,7 +84,7 @@ class RoundIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: dark ? Colors.white.withOpacity(0.08) : Colors.white.withOpacity(0.74),
+      color: dark ? Colors.white.withValues(alpha: 0.08) : Colors.white.withValues(alpha: 0.74),
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
@@ -138,7 +138,7 @@ class BottomBar extends StatelessWidget {
       minimum: const EdgeInsets.fromLTRB(12, 6, 12, 10),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.84),
+          color: Colors.white.withValues(alpha: 0.84),
           borderRadius: BorderRadius.circular(24),
           border: Border.all(color: const Color(0xFFE7E4DE)),
         ),
