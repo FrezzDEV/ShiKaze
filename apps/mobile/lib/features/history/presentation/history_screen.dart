@@ -17,7 +17,7 @@ class HistoryScreen extends StatelessWidget {
         bottom: false,
         child: const Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.fromLTRB(22, 18, 22, 0),
               child: Align(
                 alignment: Alignment.centerLeft,
