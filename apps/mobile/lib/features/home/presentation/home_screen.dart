@@ -35,21 +35,21 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(14, 18, 14, 0),
               sliver: SliverToBoxAdapter(child: _HeroBanner(onContinue: () => context.push('/reader'))),
             ),
-            SliverPadding(
-              padding: const EdgeInsets.fromLTRB(22, 22, 22, 0),
-              sliver: const SliverToBoxAdapter(child: SectionHeader(title: 'Продолжить', action: 'Все')),
+            const SliverPadding(
+              padding: EdgeInsets.fromLTRB(22, 22, 22, 0),
+              sliver: SliverToBoxAdapter(child: SectionHeader(title: 'Продолжить', action: 'Все')),
             ),
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(14, 10, 14, 0),
               sliver: SliverToBoxAdapter(child: _ContinueCard(onTap: () => context.push('/reader'))),
             ),
-            SliverPadding(
-              padding: const EdgeInsets.fromLTRB(22, 22, 22, 10),
-              sliver: const SliverToBoxAdapter(child: SectionHeader(title: 'Популярное', action: 'Смотреть все')),
+            const SliverPadding(
+              padding: EdgeInsets.fromLTRB(22, 22, 22, 10),
+              sliver: SliverToBoxAdapter(child: SectionHeader(title: 'Популярное', action: 'Смотреть все')),
             ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              sliver: const SliverToBoxAdapter(child: _PopularRow()),
+            const SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 14),
+              sliver: SliverToBoxAdapter(child: _PopularRow()),
             ),
             const SliverToBoxAdapter(child: SizedBox(height: 22)),
           ],
